@@ -188,7 +188,7 @@ services:
       - "PIPELINE_WORKERS=4"
       - xpack.monitoring.elasticsearch.hosts=http://nginx:9200
     volumes:
-      - ${PWD}/logstash/config/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+      - .\logstash\config\logstash.conf:/usr/share/logstash/pipeline/logstash.conf
     depends_on:
       - elasticsearch
       - elasticsearch2
@@ -224,7 +224,7 @@ services:
       - "PIPELINE_WORKERS=4"
       - xpack.monitoring.elasticsearch.hosts=http://nginx:9200
     volumes:
-      - ${PWD}/logstash/config/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+      - .\logstash\config\logstash.conf:/usr/share/logstash/pipeline/logstash.conf
     depends_on:
       - elasticsearch
       - elasticsearch2
@@ -260,7 +260,7 @@ services:
       - "PIPELINE_WORKERS=4"
       - xpack.monitoring.elasticsearch.hosts=http://nginx:9200
     volumes:
-      - ${PWD}/logstash/config/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+      - .\logstash\config\logstash.conf:/usr/share/logstash/pipeline/logstash.conf
     depends_on:
       - elasticsearch
       - elasticsearch2
@@ -327,7 +327,7 @@ services:
         - 514:514/udp
     restart: always
     volumes:
-        - ${PWD}/nginx-config/nginx.conf:/etc/nginx/nginx.conf
+        - .\nginx-config\nginx.conf:/etc/nginx/nginx.conf
     command: /bin/bash -c "nginx -g 'daemon off;'"
     ulimits:
       nproc: 65535
@@ -343,10 +343,9 @@ services:
     image: bash:latest
     restart: on-failure
     volumes:
-     - ${PWD}/script.sh:/script.sh
-     - ${PWD}/index_template.cfg:/index_template.cfg
-     - ${PWD}/wait_for_es.sh:/wait_for_es.sh
-    command: [bash,"./wait_for_es.sh","http://elasticsearch:9201","--",bash,"./script.sh"]
+     - ./script.sh:/script.sh
+     - ./index_template.cfg:/index_template.cfg
+    command: ["./script.sh"]
     ulimits:
       nproc: 65535
     depends_on:
