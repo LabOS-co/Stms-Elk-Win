@@ -92,3 +92,4 @@ curl -X PUT 'elasticsearch:9201/_template/logstash_clean_policy1?pretty' -H 'Con
   }
 }'
 
+
