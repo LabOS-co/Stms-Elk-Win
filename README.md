@@ -30,8 +30,8 @@ By default, the stack exposes the following ports:
 Open CMD as Administrator:
 
 ```console
-git clone https://github.com/Netlims/Stms-Elk.git
-cd Stms-Elk/
+git clone https://github.com/Netlims/Stms-Elk-Win.git
+cd Stms-Elk-Win/
 docker-compose up
 ```
 
